@@ -1,0 +1,16 @@
+.form{
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-coral{
+    background-color: coral;
+    color: whitesmoke;
+}
+
+.text-danger{
+    color: violet;
+}

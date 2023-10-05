@@ -1,0 +1,91 @@
+<div class="container-fluid" [ngStyle]="{'backgroundColor': 'coral'}">
+    <div class="row">
+        <div class="col-8 mt-3 m-auto">
+        <h2 class="text-center text-light">¡Dejanos tus datos!</h2>
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input 
+                    formControlName="name" 
+                    type="text" 
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': nameControl.invalid && nameControl.touched}" 
+                    id="name">
+                </div>
+
+                <div class="small mb-3">
+                    <ng-container *ngIf="nameControl.errors?.['required']">
+                        Necesitamos saber tu nombre
+                    </ng-container>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="mail" class="form-label">Correo:</label>
+                    <input 
+                    formControlName="email" 
+                    type="email" 
+                    class="form-control" 
+                    [ngClass]="{ 'is-invalid': emailControl.invalid && emailControl.touched}"
+                    id="mail">
+                </div>
+
+                <div class="small mb-3">
+                    <ng-container *ngIf="emailControl.errors?.['required']">
+                        Este campo es obligatorio
+                    </ng-container>
+                </div>
+                <div class="small text-danger mb-3">
+                    <ng-container *ngIf="emailControl.errors?.['email']" >
+                        El valor ingresado no es un correo válido
+                    </ng-container>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Telefono:</label>
+                    <input 
+                    formControlName="phone"  
+                    type="tel" 
+                    minlength="10"
+                    class="form-control" 
+                    [ngClass]="{ 'is-invalid': phoneControl.invalid && phoneControl.touched}"
+                    id="phone">
+                </div>
+
+                <div class="small mb-3">
+                    <ng-container *ngIf="phoneControl.errors?.['required']">
+                        Este campo es obligatorio
+                    </ng-container>
+                </div>
+                <div class="small text-danger mb-3">
+                    <ng-container *ngIf="phoneControl.errors?.['minlength']">
+                        El telefono no posee la cantidad de caracteres obligatorios (10)
+                    </ng-container>
+                </div>
+
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Direccion:</label>
+                    <input 
+                    formControlName="address"  
+                    type="text" 
+                    class="form-control" 
+                    id="direccion">
+                </div>
+                
+                <div class="small mb-3">
+                    <ng-container *ngIf="addressControl.errors?.['required']">
+                        Necesitamos saber tu dirección
+                    </ng-container>
+                </div>
+
+                <button
+                [disabled]="userForm.invalid"
+                type="submit" 
+                class="btn btn-coral">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
